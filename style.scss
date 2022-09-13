@@ -1,0 +1,2269 @@
+//font family
+body {
+    margin: 0;
+    font-family: "Noto Sans JP", "Roboto", sans-serif;
+    line-height: 1.8;
+    box-sizing: border-box;
+}
+
+//breakpoints
+$breakpoints: (
+    // over 600px: for PC
+    "pc": "(min-width: 600px)"
+);
+
+//media query
+@mixin mq($breakpoint: pc) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+//color palette
+$main: #007979;
+$accent: #f2c94c;
+$main_text: #384459;
+$background: #f1f7f8;
+$text: #06bbbc;
+
+//background linear-gradient
+//call: @include linear-gradient();
+@mixin linear-gradient {
+    background: linear-gradient(90deg, #2ea1aa, #06bc7a);
+}
+
+//----------------------------------------------------------------------
+
+//mobile
+sample_class {
+    //...
+    //PC
+    @include mq("pc") {
+        //...
+    }
+}
+
+sample_class {
+    //中央ぞろえ
+    left: 50%;
+    transform: translate(-50%, 0%);
+    @include mq("pc") {
+    }
+}
+
+//----------------------------------------------------------------------
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    height: 65px;
+    width: 100%;
+    justify-content: space-evenly;
+    //PC
+    @include mq("pc") {
+        height: 75px;
+    }
+
+    .logo {
+        width: 128px;
+        height: 45.44px;
+        //PC
+        @include mq("pc") {
+            opacity: 0.28;
+        }
+    }
+
+    ul {
+        list-style: none;
+        color: $main_text;
+        display: none;
+        @include mq("pc") {
+            display: flex;
+        }
+
+        li {
+            padding: 10px;
+        }
+
+        li + li {
+            border-left: 1px solid #dddddd;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: $main_text;
+    }
+
+    .header-list {
+        align-items: center;
+        display: flex;
+    }
+
+    button {
+        height: 65px;
+        background-color: $main;
+        color: white;
+        border: 0;
+        display: flex;
+        align-items: center;
+        @include mq("pc") {
+            height: 75px;
+        }
+
+        &:hover {
+            transition: all 0.1s;
+            filter: brightness(1.2);
+        }
+
+        .triangle {
+            border-top: solid 10px transparent;
+            border-right: solid 10px transparent;
+            border-bottom: solid 10px transparent;
+            border-left: solid 20px $accent;
+        }
+    }
+}
+
+#section1 {
+    height: 520px;
+    position: relative;
+    @include mq("pc") {
+        height: 600px;
+    }
+
+    .container {
+        width: 100%;
+        height: auto;
+        @include mq("pc") {
+        }
+
+        .bg {
+            position: absolute;
+            display: flex;
+            height: auto;
+            width: 100%;
+            flex-direction: column;
+            @include mq("pc") {
+                flex-direction: row;
+            }
+
+            .bg01 {
+                height: 210px;
+                width: 100%;
+                background-image: url("images/hero01_bg01.jpg");
+                background-size: cover;
+                @include mq("pc") {
+                    height: 600px;
+                    width: 50%;
+                }
+            }
+
+            .bg02 {
+                height: 210px;
+                width: 100%;
+                margin-top: 100px;
+                background-image: url("images/hero01_bg02.jpg");
+                background-size: cover;
+                @include mq("pc") {
+                    height: 600px;
+                    width: 50%;
+                    margin-top: 0px;
+                }
+            }
+        }
+
+        .sec1_logo {
+            //fwywdのロゴ
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            top: 45px;
+            width: 71px;
+            height: 35px;
+            @include mq("pc") {
+                transform: translate(0%, 0%);
+                left: 0;
+                margin-left: 150px;
+                margin-left: 444px;
+                top: 100px;
+            }
+
+            .logo {
+                width: 71px;
+                height: 35px;
+                @include mq("pc") {
+                    width: 160px;
+                    height: 79px;
+                }
+            }
+        }
+
+        .hero_txt {
+            width: auto;
+            position: absolute;
+            top: 100px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            display: flex;
+            flex-direction: column;
+            @include mq("pc") {
+                transform: translate(0%, 0%);
+                left: 0;
+                margin-left: 143px;
+                padding-top: 52px;
+                top: 150px;
+            }
+
+            .hero_img {
+                //でっかい文字の「起業を目指す人の...」
+                z-index: 100;
+                width: 332px;
+                height: 23px;
+                @include mq("pc") {
+                    width: 749px;
+                    height: 52px;
+                }
+            }
+
+            .line1 {
+                //白い線
+                top: 0px;
+                width: 332px;
+                border-bottom: 14px solid white;
+                z-index: 80;
+                margin-top: -10px;
+                @include mq("pc") {
+                    margin-top: -20px;
+                    width: 773px;
+                    border-bottom: 26px solid white;
+                }
+            }
+        }
+
+        .con2 {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: auto;
+            top: 132px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            @include mq("pc") {
+                transform: translate(0%, 0%);
+                left: 0;
+                margin-left: 180px;
+                top: 300px;
+            }
+
+            .txt1 {
+                font-size: 12px;
+                color: $main;
+                font-weight: bold;
+                margin: 10px;
+                width: 150px;
+                @include mq("pc") {
+                    font-size: 23px;
+                    margin: 20px;
+                    width: 280px;
+                }
+            }
+
+            .cross {
+                width: 9px;
+                height: 9px;
+                @include mq("pc") {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+
+            .txt2 {
+                font-size: 12px;
+                color: $main;
+                font-weight: bold;
+                margin: 10px;
+                width: 150px;
+                @include mq("pc") {
+                    font-size: 23px;
+                    margin: 20px;
+                    width: 280px;
+                }
+            }
+        }
+
+        .appear {
+            position: absolute;
+            font-size: 10px;
+            color: $main;
+            font-weight: bold;
+            width: 165px;
+            top: 220px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            @include mq("pc") {
+                //中央ぞろえ
+                left: 0%;
+                transform: translate(0%, 0%);
+                font-size: 16px;
+                margin-left: 390px;
+                top: 370px;
+                width: 264px;
+            }
+        }
+
+        button {
+            position: absolute;
+            top: 250px;
+            width: auto;
+            width: 190px;
+            height: 44px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            @include linear-gradient();
+            color: white;
+            border: 0;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0px 4px 20px #ffffff, -4px -4px 20px #ffffff;
+            @include mq("pc") {
+                //中央ぞろえ
+                left: 0;
+                transform: translate(0%, 0%);
+                width: 290px;
+                height: 66px;
+                margin-left: 380px;
+                top: 420px;
+            }
+
+            &:hover {
+                transition: all 0.1s;
+                filter: brightness(1.1);
+            }
+
+            .triangle {
+                margin-left: 10px;
+                border-top: solid 5px transparent;
+                border-right: solid 5px transparent;
+                border-bottom: solid 5px transparent;
+                border-left: solid 10px $accent;
+                @include mq("pc") {
+                    margin-left: 20px;
+                    border-top: solid 10px transparent;
+                    border-right: solid 10px transparent;
+                    border-bottom: solid 10px transparent;
+                    border-left: solid 20px $accent;
+                }
+            }
+
+            .b_txt {
+                font-size: 12px;
+                margin: 10px;
+                @include mq("pc") {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+#section2 {
+    height: 770px;
+    width: 100%;
+    position: relative;
+    @include mq("pc") {
+        height: 700px;
+    }
+
+    .container {
+        //灰色の背景のところ
+        position: absolute;
+        top: 0px;
+        height: 700px;
+        width: 100%;
+        background-color: $background;
+        @include mq("pc") {
+            top: 100px;
+            width: 90%;
+            height: 490px;
+        }
+
+        .txt1 {
+            margin-top: 64px;
+            color: $main;
+            margin-left: 10%;
+            @include mq("pc") {
+                margin-left: 25%;
+            }
+            .big {
+                font-size: 32px;
+                font-weight: bold;
+            }
+            .br0 {
+                @include mq("pc") {
+                    display: none;
+                }
+            }
+        }
+
+        .txt2 {
+            margin-top: 22px;
+            margin-left: 94px;
+            font-size: 10px;
+            color: $main;
+            @include mq("pc") {
+                margin-left: 30%;
+            }
+        }
+
+        .txt3 {
+            margin: -15px 10px 0px;
+            max-width: 560px;
+            color: $main_text;
+            @include mq("pc") {
+                margin-left: 25%;
+            }
+            .br1 {
+                display: none;
+                @include mq("pc") {
+                    display: inline;
+                }
+            }
+        }
+
+        .txt4 {
+            width: 330px;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            font-size: 18px;
+            font-weight: bold;
+            color: $main;
+            @include mq("pc") {
+                margin-left: 25%;
+                transform: translate(0%, 0%);
+            }
+        }
+
+        .line {
+            width: 330px;
+            border-bottom: 3px solid $main;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            margin-top: -20px;
+            @include mq("pc") {
+                margin-left: 25%;
+                transform: translate(0%, 0%);
+            }
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid $main;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            margin-top: -17px;
+            @include mq("pc") {
+                margin-left: 32.5%;
+                transform: translate(0%, 0%);
+            }
+        }
+
+        .img {
+            position: relative;
+            .img01 {
+                width: 90%;
+                max-width: 510px;
+                margin-top: 40px;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+                @include mq("pc") {
+                    margin-top: -350px;
+                    margin-left: 80%;
+                }
+            }
+
+            .img02 {
+                position: absolute;
+                top: 60%;
+                left: 70%;
+                width: 85px;
+                @include mq("pc") {
+                    top: -60%;
+                    width: 135px;
+                    left: 85%;
+                }
+            }
+        }
+    }
+}
+
+#section3 {
+    height: 1280px;
+    width: 100%;
+    position: relative;
+
+    .txt1 {
+        margin-top: 30px;
+        color: $main;
+        text-align: center;
+        @include mq("pc") {
+            font-size: 18px;
+        }
+    }
+
+    .img01 {
+        //中央ぞろえ
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        z-index: 30;
+        position: absolute;
+    }
+
+    .container {
+        position: absolute;
+        width: 100%;
+        margin-top: 50px;
+        height: 1070px;
+        background-color: $background;
+        font-weight: bold;
+        z-index: 20;
+        @include mq("pc") {
+            margin-top: 50px;
+            height: 1020px;
+        }
+
+        .line1 {
+            //「起業する = 独立」だけではないの下のところの白線
+            position: absolute;
+            width: 310px;
+            border-bottom: 12px solid white;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            padding-top: 85px;
+            z-index: 80;
+            @include mq("pc") {
+                width: 604px;
+                padding-top: 120px;
+                border-bottom: 22px solid white;
+            }
+        }
+
+        .txt2 {
+            //「起業する = 独立」だけではない
+            position: absolute;
+            width: 310px;
+            padding-top: 60px;
+            font-size: 20px;
+            color: $main_text;
+            z-index: 100;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            @include mq("pc") {
+                font-size: 40px;
+                width: 604px;
+            }
+
+            .green {
+                color: $main;
+                @include mq("pc") {
+                }
+            }
+        }
+
+        .flex-box {
+            display: flex;
+            flex-direction: column;
+            @include mq("pc") {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .circle-txt {
+                position: absolute;
+                width: 90%;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+                top: 150px;
+                @include mq("pc") {
+                    margin-top: 150px;
+                }
+
+                .circle {
+                    width: 100%;
+                    max-width: 360px;
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    @include mq("pc") {
+                        max-width: 445px;
+                        margin-left: 30%;
+                        transform: translate(-50%, 0%);
+                    }
+                }
+
+                .txt {
+                    text-align: center;
+                    color: $main;
+                    margin-top: -180px;
+                    @include mq("pc") {
+                        display: none;
+                    }
+                }
+            }
+
+            .box1 {
+                position: relative;
+                margin-top: 490px;
+                background-color: white;
+                height: 400px;
+                width: 95%;
+                border-radius: 10px;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+                z-index: 80;
+                max-width: 380px;
+                @include mq("pc") {
+                    margin-top: 250px;
+                    margin-left: 70%;
+                    transform: translate(-50%, 0%);
+                    max-width: 600px;
+                    height: 555px;
+                }
+
+                .txt1 {
+                    position: absolute;
+                    width: 100%;
+                    top: 0px;
+                    color: $main_text;
+                    font-size: 12px;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    @include mq("pc") {
+                        font-size: 18px;
+                    }
+
+                    .font-color {
+                        @include linear-gradient();
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+
+                .triangle1 {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid #06bbbc;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 100px;
+                    @include mq("pc") {
+                        top: 185px;
+                    }
+                }
+                .triangle2 {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid #92cfcf;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 110px;
+                    @include mq("pc") {
+                        top: 195px;
+                    }
+                }
+
+                .txt2 {
+                    font-size: 14px;
+                    width: 245px;
+                    position: absolute;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    color: $main_text;
+                    top: 60px;
+                    z-index: 100;
+                    @include mq("pc") {
+                        font-size: 22px;
+                        width: 384px;
+                    }
+                }
+
+                .line1 {
+                    position: absolute;
+                    width: 245px;
+                    border-bottom: 6px solid $accent;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 50px;
+                    z-index: 80;
+                    @include mq("pc") {
+                        top: 30px;
+                        width: 380px;
+                    }
+                }
+
+                .sbox1 {
+                    position: absolute;
+                    width: 260px;
+                    height: 64px;
+                    background-color: $background;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    border-radius: 4px;
+                    top: 200px;
+                    @include mq("pc") {
+                        top: 230px;
+                        width: 450px;
+                        height: 110px;
+                    }
+
+                    .s-txt1 {
+                        text-align: center;
+                        margin-top: 0;
+                        font-size: 10px;
+                        color: $main;
+                        @include mq("pc") {
+                            font-size: 18px;
+                        }
+                    }
+                    .s-txt2 {
+                        text-align: center;
+                        margin-top: -10px;
+                        font-size: 25px;
+                        color: $main_text;
+                        @include mq("pc") {
+                            font-size: 40px;
+                        }
+                    }
+                }
+
+                .imgor {
+                    position: absolute;
+                    width: 28px;
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 275px;
+                    @include mq("pc") {
+                        font-size: 48px;
+                        top: 360px;
+                    }
+                }
+
+                .sbox2 {
+                    position: absolute;
+                    width: 260px;
+                    height: 64px;
+                    background-color: $background;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    border-radius: 4px;
+                    top: 300px;
+                    @include mq("pc") {
+                        top: 400px;
+                        width: 450px;
+                        height: 110px;
+                    }
+
+                    .s-txt1 {
+                        text-align: center;
+                        margin-top: 0;
+                        font-size: 10px;
+                        color: $main;
+                        @include mq("pc") {
+                            font-size: 18px;
+                        }
+                    }
+                    .s-txt2 {
+                        text-align: center;
+                        margin-top: -10px;
+                        font-size: 25px;
+                        color: $main_text;
+                        @include mq("pc") {
+                            font-size: 40px;
+                        }
+                    }
+                }
+                .human1 {
+                    position: absolute;
+                    z-index: 100;
+                    width: 65px;
+                    left: 10%;
+                    transform: translate(-50%, 0%);
+                    top: 200px;
+                    @include mq("pc") {
+                        width: 113px;
+                    }
+                }
+                .human2 {
+                    position: absolute;
+                    z-index: 100;
+                    width: 45px;
+                    left: 90%;
+                    transform: translate(-50%, 0%);
+                    top: 200px;
+                    @include mq("pc") {
+                        width: 80px;
+                    }
+                }
+            }
+        }
+
+        .txt3 {
+            font-size: 18px;
+            color: $main_text;
+            text-align: center;
+            @include mq("pc") {
+                font-size: 24px;
+            }
+
+            .font-color {
+                @include linear-gradient();
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .txtbr {
+                @include mq("pc") {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .triangle4 {
+        width: 100%;
+        height: 110px;
+        clip-path: polygon(0 0, 100% 0%, 50% 100%);
+        background-color: $background;
+        //中央ぞろえ
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        margin-top: 1135px;
+        @include mq("pc") {
+            margin-top: 1085px;
+        }
+    }
+}
+
+#section4 {
+    height: 700px;
+    width: 100%;
+    position: relative;
+    @include mq("pc") {
+        height: 500px;
+    }
+
+    .img1 {
+        //中央ぞろえ
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        position: absolute;
+        width: 100%;
+        max-width: 370px;
+        @include mq("pc") {
+            display: none;
+        }
+    }
+
+    .img2 {
+        //中央ぞろえ
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        position: absolute;
+        width: 100%;
+        display: none;
+        @include mq("pc") {
+            display: inline-block;
+            max-width: 1200px;
+        }
+    }
+}
+
+#section5 {
+    height: 1280px;
+    width: 100%;
+    position: relative;
+
+    .txt1 {
+        margin-top: 30px;
+        color: $main;
+        text-align: center;
+        @include mq("pc") {
+            font-size: 18px;
+        }
+    }
+
+    .img01 {
+        //中央ぞろえ
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        z-index: 30;
+        position: absolute;
+    }
+
+    .container {
+        position: absolute;
+        width: 100%;
+        margin-top: 50px;
+        height: 970px;
+        background-color: $background;
+        font-weight: bold;
+        z-index: 20;
+        @include mq("pc") {
+            margin-top: 50px;
+            height: 900px;
+        }
+
+        .line1 {
+            //「教わるだけの人材...」の下のところの白線
+            position: absolute;
+            width: 224px;
+            border-bottom: 12px solid white;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            padding-top: 115px;
+            z-index: 80;
+            @include mq("pc") {
+                width: 732px;
+                padding-top: 120px;
+                border-bottom: 22px solid white;
+            }
+        }
+
+        .txt2 {
+            //「教わるだけの人材...」
+            position: absolute;
+            width: 2240px;
+            padding-top: 60px;
+            font-size: 20px;
+            color: $main_text;
+            z-index: 100;
+            text-align: center;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            @include mq("pc") {
+                font-size: 40px;
+                width: 732px;
+            }
+
+            .txtbr {
+                @include mq("pc") {
+                    display: none;
+                }
+            }
+
+            .green {
+                color: $main;
+                @include mq("pc") {
+                }
+            }
+        }
+
+        .flex-box {
+            display: flex;
+            flex-direction: column;
+            @include mq("pc") {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .circle-txt {
+                position: absolute;
+                width: 90%;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+                top: 150px;
+                @include mq("pc") {
+                    margin-top: 150px;
+                }
+
+                .circle {
+                    width: 100%;
+                    max-width: 360px;
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    @include mq("pc") {
+                        max-width: 445px;
+                        margin-left: 30%;
+                        transform: translate(-50%, 0%);
+                    }
+                }
+
+                .txt {
+                    text-align: center;
+                    color: $main;
+                    margin-top: -180px;
+                    @include mq("pc") {
+                        display: none;
+                    }
+                }
+            }
+
+            .box1 {
+                position: relative;
+                margin-top: 490px;
+                background-color: white;
+                height: 400px;
+                width: 95%;
+                border-radius: 10px;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+                z-index: 80;
+                max-width: 380px;
+                @include mq("pc") {
+                    margin-top: 250px;
+                    margin-left: 70%;
+                    transform: translate(-50%, 0%);
+                    max-width: 600px;
+                    height: 555px;
+                }
+
+                .txt1 {
+                    position: absolute;
+                    width: 100%;
+                    top: 0px;
+                    color: $main_text;
+                    font-size: 12px;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    @include mq("pc") {
+                        font-size: 18px;
+                    }
+
+                    .font-color {
+                        @include linear-gradient();
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+
+                .triangle1 {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid #06bbbc;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 100px;
+                    @include mq("pc") {
+                        top: 185px;
+                    }
+                }
+                .triangle2 {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid #92cfcf;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 110px;
+                    @include mq("pc") {
+                        top: 195px;
+                    }
+                }
+
+                .txt2 {
+                    font-size: 14px;
+                    width: 300px;
+                    position: absolute;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    color: $main_text;
+                    top: 60px;
+                    z-index: 100;
+                    @include mq("pc") {
+                        font-size: 22px;
+                        width: 470px;
+                    }
+                }
+
+                .line1 {
+                    position: absolute;
+                    width: 300px;
+                    border-bottom: 6px solid $accent;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 20px;
+                    z-index: 80;
+                    @include mq("pc") {
+                        top: 30px;
+                        width: 470px;
+                    }
+                }
+
+                .sbox1 {
+                    position: absolute;
+                    width: 260px;
+                    height: 64px;
+                    background-color: $background;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    border-radius: 4px;
+                    top: 200px;
+                    @include mq("pc") {
+                        top: 230px;
+                        width: 450px;
+                        height: 110px;
+                    }
+
+                    .s-txt1 {
+                        text-align: center;
+                        margin-top: 0;
+                        font-size: 10px;
+                        color: $main;
+                        @include mq("pc") {
+                            font-size: 18px;
+                        }
+                    }
+                    .s-txt2 {
+                        text-align: center;
+                        margin-top: -10px;
+                        font-size: 25px;
+                        color: $main_text;
+                        @include mq("pc") {
+                            font-size: 40px;
+                        }
+                    }
+                }
+
+                .imgor {
+                    position: absolute;
+                    width: 18px;
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    top: 275px;
+                    @include mq("pc") {
+                        font-size: 48px;
+                        top: 360px;
+                    }
+                }
+
+                .sbox2 {
+                    position: absolute;
+                    width: 260px;
+                    height: 64px;
+                    background-color: $background;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                    border-radius: 4px;
+                    top: 300px;
+                    @include mq("pc") {
+                        top: 400px;
+                        width: 450px;
+                        height: 110px;
+                    }
+
+                    .s-txt1 {
+                        text-align: center;
+                        margin-top: 0;
+                        font-size: 10px;
+                        color: $main;
+                        @include mq("pc") {
+                            font-size: 18px;
+                        }
+                    }
+                    .s-txt2 {
+                        text-align: center;
+                        margin-top: -10px;
+                        font-size: 25px;
+                        color: $main_text;
+                        @include mq("pc") {
+                            font-size: 40px;
+                        }
+                    }
+                }
+                .human1 {
+                    position: absolute;
+                    z-index: 100;
+                    width: 53px;
+                    left: 80%;
+                    transform: translate(-50%, 0%);
+                    top: 220px;
+                    @include mq("pc") {
+                        width: 93px;
+                        left: 90%;
+                    }
+                }
+                .human2 {
+                    position: absolute;
+                    z-index: 100;
+                    width: 59px;
+                    left: 80%;
+                    transform: translate(-50%, 0%);
+                    top: 330px;
+                    @include mq("pc") {
+                        width: 103px;
+                        top: 430px;
+                        left: 90%;
+                    }
+                }
+            }
+        }
+    }
+
+    .triangle4 {
+        width: 100%;
+        height: 110px;
+        clip-path: polygon(0 0, 100% 0%, 50% 100%);
+        background-color: $background;
+        //中央ぞろえ
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        margin-top: 1035px;
+        @include mq("pc") {
+            margin-top: 965px;
+        }
+    }
+}
+
+#section6 {
+    height: 750px;
+    width: 100%;
+    position: relative;
+    @include mq("pc") {
+        height: 500px;
+    }
+
+    .container {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        @include mq("pc") {
+            flex-direction: row;
+        }
+
+        .txt-img1 {
+            width: 100%;
+            height: 300px;
+            text-align: center;
+            @include mq("pc") {
+                height: 440px;
+            }
+
+            .txt1 {
+                font-size: 18px;
+                font-weight: bold;
+                color: $main_text;
+                @include mq("pc") {
+                    font-size: 24px;
+                }
+                .font-color {
+                    @include linear-gradient();
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+            .img1 {
+                width: 90%;
+                max-width: 250px;
+                @include mq("pc") {
+                    max-width: 350px;
+                }
+            }
+        }
+
+        .triangles {
+            width: 10%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 0px;
+            @include mq("pc") {
+                flex-direction: row;
+                margin-top: 50px;
+            }
+            .triangle1 {
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid #06bbbc;
+                //top: 100px;
+                @include mq("pc") {
+                    //top: 185px;
+                    border-top: 50px solid transparent;
+                    border-bottom: 50px solid transparent;
+                    border-left: 50px solid #06bbbc;
+                }
+            }
+            .triangle2 {
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid #92cfcf;
+                //top: 100px;
+                @include mq("pc") {
+                    //top: 185px;
+                    border-top: 50px solid transparent;
+                    border-bottom: 50px solid transparent;
+                    border-left: 50px solid #92cfcf;
+                }
+            }
+        }
+
+        .txt-img2 {
+            width: 100%;
+            height: 300px;
+            text-align: center;
+            @include mq("pc") {
+                height: 440px;
+            }
+
+            .txt2 {
+                font-size: 18px;
+                font-weight: bold;
+                color: $main_text;
+                @include mq("pc") {
+                    font-size: 24px;
+                }
+                .font-color {
+                    @include linear-gradient();
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+            .img2 {
+                width: 90%;
+                max-width: 250px;
+                @include mq("pc") {
+                    max-width: 350px;
+                }
+            }
+        }
+    }
+}
+
+#section7 {
+    height: 540px;
+    background-color: black;
+    position: relative;
+
+    .container {
+        position: absolute;
+        z-index: 50;
+        width: 100%;
+        height: 540px;
+        @include mq("pc") {
+        }
+
+        .bg {
+            display: flex;
+            height: 540px;
+            width: 100%;
+            flex-direction: column;
+            @include mq("pc") {
+                flex-direction: row;
+            }
+
+            .bg01 {
+                height: 540px;
+                width: 100%;
+                background-image: url("images/hero02_bg (2).png");
+                background-size: cover;
+                @include mq("pc") {
+                    width: 100%;
+                    background-image: url("images/hero02_bg (1).png");
+                }
+            }
+        }
+
+        .logo {
+            position: absolute;
+            //中央ぞろえ
+            left: 45%;
+            transform: translate(-50%, 0%);
+            z-index: 100;
+            top: 80px;
+            width: 100px;
+            @include mq("pc") {
+                width: 120px;
+            }
+        }
+
+        .txt1 {
+            position: absolute;
+            font-size: 20px;
+            color: white;
+            top: 80px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            text-align: center;
+            width: 325px;
+            @include mq("pc") {
+                font-size: 32px;
+                width: 512px;
+                top: 60px;
+            }
+            .green {
+                @include linear-gradient();
+            }
+        }
+
+        .txt2 {
+            position: absolute;
+            color: white;
+            font-size: 16px;
+            top: 260px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            font-weight: normal;
+            text-align: center;
+            width: 360px;
+            @include mq("pc") {
+                width: 380px;
+                text-align: left;
+                font-size: 18px;
+            }
+        }
+
+        .txt3 {
+            position: absolute;
+            color: white;
+            width: 325px;
+            font-size: 14px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            font-weight: normal;
+            top: 400px;
+        }
+
+        button {
+            position: absolute;
+            top: 250px;
+            width: auto;
+            width: 190px;
+            height: 44px;
+            //中央ぞろえ
+            left: 50%;
+            transform: translate(-50%, 0%);
+            @include linear-gradient();
+            color: white;
+            border: 0;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            top: 450px;
+            @include mq("pc") {
+                width: 290px;
+                height: 66px;
+            }
+
+            &:hover {
+                transition: all 0.1s;
+                filter: brightness(1.1);
+            }
+
+            .triangle {
+                margin-left: 10px;
+                border-top: solid 5px transparent;
+                border-right: solid 5px transparent;
+                border-bottom: solid 5px transparent;
+                border-left: solid 10px $accent;
+                @include mq("pc") {
+                    margin-left: 20px;
+                    border-top: solid 10px transparent;
+                    border-right: solid 10px transparent;
+                    border-bottom: solid 10px transparent;
+                    border-left: solid 20px $accent;
+                }
+            }
+
+            .b_txt {
+                font-size: 12px;
+                margin: 10px;
+                @include mq("pc") {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+#section8 {
+    margin-top: -20px;
+    height: 2665px;
+    background-color: $background;
+    @include mq("pc") {
+        height: 1230px;
+    }
+
+    .container {
+        height: 1265px;
+        background-color: $background;
+
+        .title1 {
+            text-align: center;
+            padding-top: 50px;
+            font-size: 12px;
+            color: $main;
+            @include mq("pc") {
+                font-size: 20px;
+            }
+        }
+
+        .title2 {
+            text-align: center;
+            font-size: 24px;
+            color: $main_text;
+            font-weight: bold;
+            margin-top: -20px;
+            @include mq("pc") {
+                font-size: 32px;
+            }
+        }
+
+        .lines {
+            display: flex;
+            justify-content: center;
+            margin-top: -40px;
+            .line1 {
+                width: 50px;
+                border-bottom: 3px solid $main;
+            }
+            .line2 {
+                width: 50px;
+                border-bottom: 3px solid $accent;
+            }
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            flex-direction: column;
+            align-items: center;
+            @include mq("pc") {
+                flex-direction: row;
+            }
+            .card {
+                width: 350px;
+                height: 450px;
+                background-color: white;
+                text-align: center;
+                border-radius: 16px;
+                margin: 20px;
+                .tmb {
+                    width: 350px;
+                }
+                .card_title {
+                    font-size: 18px;
+                    color: $main;
+                    margin-top: 0px;
+                    text-align: left;
+                    margin-left: 10px;
+                }
+                .card_line {
+                    border-bottom: 2px solid $main;
+                    width: 340px;
+                    margin-top: -10px;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                }
+                .card_txt {
+                    font-size: 14px;
+                    color: $main_text;
+                    text-align: left;
+                    width: 95%;
+                    //中央ぞろえ
+                    margin-left: 50%;
+                    transform: translate(-50%, 0%);
+                }
+            }
+        }
+    }
+}
+
+#section9 {
+    height: 2665px;
+    @include mq("pc") {
+        height: 1265px;
+    }
+    .container {
+        height: 2700px;
+        background-image: url("images/bg.png");
+        background-size: cover;
+        @include mq("pc") {
+            height: 1300px;
+        }
+
+        .title1 {
+            padding-top: 50px;
+            text-align: center;
+            font-size: 24px;
+            color: $main_text;
+            font-weight: bold;
+            @include mq("pc") {
+                font-size: 32px;
+            }
+        }
+
+        .lines {
+            display: flex;
+            justify-content: center;
+            margin-top: -40px;
+            padding-bottom: 50px;
+            .line1 {
+                width: 50px;
+                border-bottom: 3px solid $main;
+            }
+            .line2 {
+                width: 50px;
+                border-bottom: 3px solid $accent;
+            }
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            @include mq("pc") {
+                flex-direction: row;
+            }
+            .card1 {
+                position: relative;
+                width: 340px;
+                height: 410px;
+                background-color: white;
+                text-align: center;
+                margin: 100px 20px;
+                //border-gradient
+                background: linear-gradient(90deg, #2ea1aa, #06bc7a);
+                padding: 6px;
+                border-radius: 16px;
+                @include mq("pc") {
+                    width: 570px;
+                    height: 360px;
+                }
+                .card_child1 {
+                    border-radius: 16px;
+                    background: white;
+                    height: 100%;
+                }
+            }
+            .card2 {
+                position: absolute;
+                z-index: 80;
+                top: -10px;
+                left: -10px;
+                width: 340px;
+                height: 410px;
+                background-color: white;
+                text-align: center;
+                //border-gradient
+                background: linear-gradient(90deg, #2ea1aa, #06bc7a);
+                padding: 6px;
+                border-radius: 16px;
+                @include mq("pc") {
+                    width: 570px;
+                    height: 360px;
+                }
+                .card_child2 {
+                    border-radius: 16px;
+                    background: white;
+                    height: 100%;
+                }
+            }
+
+            //内部の要素いろいろ
+            .tmb {
+                width: 150px;
+                margin-top: -100px;
+                @include mq("pc") {
+                    width: 200px;
+                }
+            }
+            .card_title {
+                font-size: 20px;
+                font-weight: bold;
+                color: $main;
+                margin-top: 0px;
+                text-align: center;
+                margin-left: 10px;
+                @include mq("pc") {
+                    font-size: 24px;
+                }
+
+                .font-color {
+                    @include linear-gradient();
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+                .brtxt {
+                    @include mq("pc") {
+                        display: none;
+                    }
+                }
+            }
+            .card_line {
+                border-bottom: 3px solid $accent;
+                width: 290px;
+                margin-top: -20px;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            .card_name {
+                font-size: 10px;
+                color: $main_text;
+                text-align: center;
+                margin-top: -10px;
+                @include mq("pc") {
+                    font-size: 14px;
+                }
+            }
+            .card_txt {
+                margin-top: -10px;
+                font-size: 16px;
+                color: $main_text;
+                text-align: left;
+                width: 85%;
+                //中央ぞろえ
+                margin-left: 50%;
+                transform: translate(-50%, 0%);
+            }
+        }
+    }
+}
+
+#section10 {
+    height: 2500px;
+    @include mq("pc") {
+        height: 1100px;
+    }
+    .container {
+        height: 2500px;
+        background-color: #fafafa;
+        @include mq("pc") {
+            height: 1100px;
+        }
+
+        .title1 {
+            padding-top: 50px;
+            text-align: center;
+            font-size: 24px;
+            color: $main_text;
+            font-weight: bold;
+            @include mq("pc") {
+                font-size: 32px;
+            }
+        }
+
+        .lines {
+            display: flex;
+            justify-content: center;
+            margin-top: -40px;
+            padding-bottom: 30px;
+            .line1 {
+                width: 50px;
+                border-bottom: 3px solid $main;
+            }
+            .line2 {
+                width: 50px;
+                border-bottom: 3px solid $accent;
+            }
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            @include mq("pc") {
+                flex-direction: row;
+            }
+            .card1 {
+                width: 340px;
+                height: 580px;
+                background-color: white;
+                text-align: center;
+                margin: 50px 20px;
+                border: 3px solid #e1e1e1;
+                border-radius: 16px;
+            }
+            .card2 {
+                position: relative;
+                width: 340px;
+                height: 580px;
+                background-color: white;
+                text-align: center;
+                margin: 50px 20px;
+                border: 5px solid $accent;
+                border-radius: 16px;
+            }
+        }
+
+        //内部の要素いろいろ
+        .tmb {
+            margin-top: 30px;
+            width: 200px;
+            @include mq("pc") {
+                width: 200px;
+            }
+        }
+        .font-color {
+            @include linear-gradient();
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .title {
+            font-size: 20x;
+            font-weight: bold;
+        }
+        .price {
+            margin-top: -25px;
+            font-size: 20px;
+            .big-font {
+                font-size: 32px;
+                font-weight: bold;
+            }
+        }
+        .txt {
+            margin-top: -15px;
+            font-size: 14px;
+            color: $main_text;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        //最後のチェックリスト
+        .check-txt {
+            display: flex;
+            margin-left: 50px;
+            align-items: center;
+            margin-top: -20px;
+            margin-bottom: -40px;
+            .check {
+                width: 14px;
+                padding-right: 10px;
+            }
+            .txt_inner {
+                font-size: 16px;
+                color: $main_text;
+            }
+            .check2 {
+                width: 14px;
+                padding-right: 10px;
+            }
+            .txt_inner2 {
+                font-size: 16px;
+                color: #bdbdbd;
+            }
+        }
+
+        .plus {
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
+        .box4 {
+            width: 340px;
+            height: 70px;
+            background-color: white;
+            text-align: center;
+            margin: 50px 20px;
+            border: 3px solid #e1e1e1;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            //中央ぞろえ
+            margin-left: 50%;
+            transform: translate(-50%, 0%);
+            @include mq("pc") {
+                width: 1070px;
+            }
+            .box4_txt {
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                color: #06bbbc;
+                @include mq("pc") {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        //card2の星の勲章
+        .star {
+            position: absolute;
+            top: -2px;
+            left: 85%;
+            width: 32px;
+        }
+    }
+}
+
+#section11 {
+    height: 550px;
+    background-color: black;
+
+    .container {
+        width: 100%;
+        height: 550px;
+        @include mq("pc") {
+            height: 540px;
+        }
+
+        .bg {
+            display: flex;
+            height: 550px;
+            width: 100%;
+            flex-direction: column;
+            @include mq("pc") {
+                flex-direction: row;
+            }
+
+            .bg01 {
+                height: 550px;
+                width: 100%;
+                background-image: url("images/hero02_bg (2).png");
+                background-size: cover;
+                @include mq("pc") {
+                    width: 100%;
+                    background-image: url("images/hero02_bg (1).png");
+                }
+            }
+        }
+
+        .flex_container {
+            margin-top: -400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            @include mq("pc") {
+                margin-top: -450px;
+            }
+        }
+
+        .flex_container2 {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include mq("pc") {
+            }
+
+            .txt1 {
+                color: white;
+                font-size: 12px;
+                @include mq("pc") {
+                    font-size: 22px;
+                }
+            }
+            .cross {
+                width: 8px;
+                margin: 0 20px;
+                @include mq("pc") {
+                    width: 18px;
+                }
+            }
+        }
+
+        .logo {
+            width: 70px;
+            @include mq("pc") {
+                width: 190px;
+            }
+        }
+
+        .hero {
+            padding-top: 20px;
+            width: 340px;
+            @include mq("pc") {
+                width: 680px;
+            }
+        }
+
+        .txt3 {
+            color: white;
+            font-size: 10px;
+            @include mq("pc") {
+                font-size: 14px;
+            }
+        }
+
+        button {
+            margin-top: -10px;
+            top: 250px;
+            width: 190px;
+            height: 44px;
+            @include linear-gradient();
+            color: white;
+            border: 0;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            top: 450px;
+            @include mq("pc") {
+                width: 290px;
+                height: 66px;
+            }
+
+            &:hover {
+                transition: all 0.1s;
+                filter: brightness(1.1);
+            }
+
+            .triangle {
+                margin-left: 10px;
+                border-top: solid 5px transparent;
+                border-right: solid 5px transparent;
+                border-bottom: solid 5px transparent;
+                border-left: solid 10px $accent;
+                @include mq("pc") {
+                    margin-left: 20px;
+                    border-top: solid 10px transparent;
+                    border-right: solid 10px transparent;
+                    border-bottom: solid 10px transparent;
+                    border-left: solid 20px $accent;
+                }
+            }
+
+            .b_txt {
+                font-size: 12px;
+                margin: 10px;
+                @include mq("pc") {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    height: 630px;
+    background-color: $main_text;
+    position: relative;
+
+    .logos {
+        margin-left: 5%;
+        display: inline-flex;
+        vertical-align: bottom;
+        align-items: center;
+        margin-bottom: 50px;
+        margin-top:50px;
+        @include mq("pc") {
+            margin-left: 15%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .logo1 {
+            width: 60px;
+        }
+        .logo2 {
+            width: 80px;
+        }
+    }
+
+    .title {
+        position: absolute;
+        top: 120px;
+        display: static;
+        text-align: left;
+        margin-left: 5%;
+        width: 100%;
+        font-size: 16px;
+        color: white;
+        @include mq("pc") {
+            position: static;
+            font-size: 24px;
+            margin: 0 100px;
+            display: inline-block;
+            vertical-align: bottom;
+            width: auto;
+            text-align: center;
+        }
+    }
+
+    .icons_txt {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        top: 470px;
+        @include mq("pc") {
+            width: auto;
+            display: inline-flex;
+            vertical-align: bottom;
+            position: static;
+            top: 0px;
+        }
+
+        .txt {
+            font-size: 12px;
+            color: white;
+            @include mq("pc") {
+                font-size: 24px;
+            }
+        }
+
+        .icons {
+            margin-top: -18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include mq("pc") {
+                margin-top: -25px;
+            }
+        }
+        .icon {
+            height: 46px;
+            width: 46px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin: 8px;
+            @include mq("pc") {
+                height: 62px;
+                width: 62px;
+                margin: 10px;
+            }
+        }
+    }
+
+    .line {
+        border: 2px solid white;
+        width: 90%;
+        margin-left: 50%;
+        transform: translate(-50%, 0%);
+        @include mq("pc") {
+        }
+    }
+
+    .menu {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: left;
+        font-size: 14px;
+        margin-top: 50px;
+        margin-right: 100px;
+        @include mq("pc") {
+            font-size: 24px;
+        }
+        .menu_title {
+            font-size: 24px;
+            color: white;
+            margin: 2px;
+        }
+        .columns {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            .column {
+                color: white;
+                margin: 2px;
+            }
+        }
+    }
+
+    .menu1 {
+        position:absolute;
+        top:150px;
+        margin-left: 5%;
+        @include mq("pc") {
+            position:static;
+            margin-left: 15%;
+        }
+    }
+
+    .menu2 {
+        position:absolute;
+        top:150px;
+        margin-left: 50%;
+        width: 50%;
+        @include mq("pc") {
+            position:static;
+            margin-left: 0%;
+            width: auto;
+        }
+    }
+
+    .menu3 {
+        position:absolute;
+        top:300px;
+        margin-left: 5%;
+        @include mq("pc") {
+            position:static;
+            margin-left: 0%;
+        }
+    }
+
+    .copyright {
+        position: absolute;
+        top: 550px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        color: white;
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+        @include mq("pc") {
+            font-size: 24px;
+        }
+    }
+}
