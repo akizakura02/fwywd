@@ -473,7 +473,7 @@ header button .triangle {
 
 @media (min-width: 600px) {
   #section2 .container .txt1 {
-    margin-left: 25%;
+    margin-left: 15%;
   }
 }
 
@@ -497,7 +497,7 @@ header button .triangle {
 
 @media (min-width: 600px) {
   #section2 .container .txt2 {
-    margin-left: 30%;
+    margin-left: 20%;
   }
 }
 
@@ -509,7 +509,7 @@ header button .triangle {
 
 @media (min-width: 600px) {
   #section2 .container .txt3 {
-    margin-left: 25%;
+    margin-left: 15%;
   }
 }
 
@@ -535,7 +535,7 @@ header button .triangle {
 
 @media (min-width: 600px) {
   #section2 .container .txt4 {
-    margin-left: 25%;
+    margin-left: 15%;
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
@@ -552,7 +552,7 @@ header button .triangle {
 
 @media (min-width: 600px) {
   #section2 .container .line {
-    margin-left: 25%;
+    margin-left: 15%;
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
@@ -572,7 +572,7 @@ header button .triangle {
 
 @media (min-width: 600px) {
   #section2 .container .triangle {
-    margin-left: 32.5%;
+    margin-left: 22.5%;
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
